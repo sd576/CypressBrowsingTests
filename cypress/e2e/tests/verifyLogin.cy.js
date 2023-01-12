@@ -6,7 +6,7 @@ describe('login actions', () => {
   });
 
   it('Valid Logon', () => {
-    const login = new loginPage();
+    // const login = new loginPage();
     login.navigate();
     login.makeAppointment();
     login.enterUserName('John Doe');
@@ -16,7 +16,7 @@ describe('login actions', () => {
   });
 
   it('Invalid Logon', () => {
-    const login = new loginPage();
+    // const login = new loginPage();
     login.navigate();
     login.makeAppointment();
     login.enterUserName('Jeff Blah');

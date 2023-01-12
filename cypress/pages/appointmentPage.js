@@ -3,7 +3,7 @@ class appointmentPage {
     cy.visit('/#appointment');
   }
 
-  chooseFacility() {
+  chooseFacility1() {
     // cy.get('[id=combo_facility]').select('Hongkong CURA Healthcare Center');
     cy.get('select')
       .select(1)
