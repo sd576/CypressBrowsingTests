@@ -27,14 +27,17 @@
 // cy.visit('/');
 
 Cypress.Commands.add('login', (username, password) => {
-  cy.session([]);
-  cy.visit('/');
-  cy.get('#btn-make-appointment').click();
-  cy.get('[id=txt-username]').clear().type(username);
-  cy.get('[id=txt-password]').clear().type(password);
-  cy.get('[id=btn-login]').click();
-  cy.location('pathname').should('eq', '/');
-  cy.get('h2').should('have.text', 'Make Appointment');
+  cy.session('login', () => {
+    cy.visit('/');
+    cy.get('#btn-make-appointment').click();
+    cy.get('[id=txt-username]').clear().type(username);
+    cy.get('[id=txt-password]').clear().type(password);
+    cy.get('[id=btn-login]').click();
+    cy.location('pathname').should('eq', '/');
+    cy.get('h2').should('have.text', 'Make Appointment');
+  }, {
+    cacheAcrossSpecs: true
+  });
 });
 //
 //
