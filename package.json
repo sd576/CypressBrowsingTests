@@ -11,5 +11,8 @@
   "license": "ISC",
   "devDependencies": {
     "cypress": "^12.3.0"
+  },
+  "dependencies": {
+    "dayjs-business-days": "^1.0.4"
   }
 }
