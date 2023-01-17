@@ -1,33 +1,26 @@
-const currentDate = new Date();
-const newDate = addDays(currentDate, 2);
+// const currentDate = new Date();
+// const newDate = addDays(currentDate, 2);
 
-// dayjs(currentDate).isBusinessDay();
-// dayjs(currentDate).nextBusinessDay().format('DD/MM/YYYY');
+// // dayjs(currentDate).isBusinessDay();
+// // dayjs(currentDate).nextBusinessDay().format('DD/MM/YYYY');
 
-function addDays(currentDate, days) {
-  currentDate.setDate(currentDate.getDate() + days);
+// function addDays(currentDate, days) {
+//   currentDate.setDate(currentDate.getDate() + days);
+//   return currentDate;
+// }
+
+// console.log(newDate.toLocaleDateString('en-uk'));
+
+function addBusinessDays(days) {
+  let currentDate = new Date();
+  let workingDays = 0;
+  while (workingDays < days) {
+    currentDate.setDate(currentDate.getDate() + 1);
+    if (currentDate.getDay() === 0 || currentDate.getDay() === 6) {
+      continue;
+    }
+    workingDays++;
+  }
   return currentDate;
 }
-
-console.log(newDate.toLocaleDateString('en-uk'));
-
-// let currentDate = new Date();
-// console.log(currentDate.toLocaleDateString('en-uk'));
-
-// ============================================================
-
-// // First of all, include dayjs
-// const dayjs = require('dayjs');
-
-// // Then, include dayjs-business-time
-// const dayjsBusinessTime = require('dayjs-business-time');
-
-// // Attach dayjs plugin
-// dayjs.extend(dayjsBusinessTime);
-
-// const day = dayjs(Date);
-// const timeToAdd = 2;
-
-// const newBusinessTime = day.addBusinessDays(timeToAdd);
-
-// console.log(newBusinessTime);
+console.log(addBusinessDays(2).toLocaleDateString('en-GB'));

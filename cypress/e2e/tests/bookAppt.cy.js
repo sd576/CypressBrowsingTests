@@ -1,6 +1,4 @@
-// import loginPage from '../../pages/loginPage';
-// import {login} from '../elements/pages/login.js'
-import newDate from '../../support/businessDays.js';
+import { addBusinessDays } from './dateHelper';
 
 describe('book appointment', () => {
   it('Appointment 1', () => {
@@ -13,8 +11,17 @@ describe('book appointment', () => {
     );
     cy.get('#radio_program_medicaid').click();
     cy.get('label:nth-child(2)').should('contain', 'Medicaid');
-    // select date picker
-    cy.get('div:nth-child(4)').click();
-    cy.log(newDate);
+
+    // select the date for the appointment
+    cy.get('div:nth-child(4)').clear().type('05/11/2023');
+
+    cy.get('#btn-book-appointment').click();
+
+    // Assertions
+    cy.get('h2').should('have.text', 'Appointment Confirmation');
+    cy.get('#facility').should('have.text', 'Tokyo CURA Healthcare Center');
+    cy.get('#program').should('have.text', 'Medicaid');
+    cy.get('#visit_date').should('have.text', '05/11/2023');
   });
 });
+
